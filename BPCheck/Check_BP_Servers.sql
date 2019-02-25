@@ -5579,7 +5579,7 @@ BEGIN
 	IF EXISTS (SELECT TraceFlag FROM @tracestatus WHERE [Global] = 1 AND TraceFlag = 6498)
 	BEGIN
 		SELECT 'Instance_checks' AS [Category], 'Global_Trace_Flags' AS [Check],
-			CASE WHEN (@sqlmajorver = 12 AND @sqlbuild >= 4416)
+			CASE WHEN (@sqlmajorver = 12 AND @sqlbuild >= 4416 AND @sqlbuild < 5000)
 					OR (@sqlmajorver = 12 AND @sqlbuild BETWEEN 2480 AND 2474)
 				THEN '[INFORMATION: TF6498 enables more than one large query compilation to gain access to the big gateway when there is sufficient memory available]'
 			WHEN (@sqlmajorver = 12 AND @sqlbuild >= 5000) OR @sqlmajorver >= 13
